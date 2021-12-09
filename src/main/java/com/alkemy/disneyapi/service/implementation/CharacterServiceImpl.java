@@ -61,14 +61,7 @@ public class CharacterServiceImpl implements CharacterService {
 
         Optional<CharacterEntity> result = characterRepository.findById(id);
         if (result.isPresent()) {
-            CharacterEntity entity = result.get();
-
-            entity.setName(dto.getName());
-            entity.setImage(dto.getImage());
-            entity.setAge(dto.getAge());
-            entity.setWeight(dto.getWeight());
-            entity.setStory(dto.getStory());
-
+            CharacterEntity entity = characterMapper.updateCharacterDTO2Entity(result.get(), dto);
             CharacterEntity entityUpdated = characterRepository.save(entity);
             CharacterDTO dtoUpdated = characterMapper.characterEntity2DTO(entityUpdated);
             return dtoUpdated;

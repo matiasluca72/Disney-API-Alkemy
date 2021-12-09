@@ -24,7 +24,7 @@ public class CharacterController {
      *
      * @return a list of characters with only their image and name attributes
      */
-    @GetMapping("/all-basic")
+    @GetMapping("/all-basic") // TODO: Fusion it with the method below
     public ResponseEntity<List<CharacterBasicDTO>> getBasicCharacterDTO() {
 
         List<CharacterBasicDTO> charactersBasic = characterService.getBasicDTOList();

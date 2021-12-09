@@ -34,7 +34,8 @@ public class MovieEntity {
 
     // RELACIÓNES
     // El Objeto GeneroEntity, este atributo será solo para traer la información del Genero
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    // Se ha modificado el CascadeType.ALL para no eliminar el género si se elimina una película
+    @ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE } )
     @JoinColumn(name = "genre_id", insertable = false, updatable = false)
     private GenreEntity genre;
 

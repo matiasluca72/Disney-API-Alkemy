@@ -53,6 +53,17 @@ public class CharacterMapper {
         return entity;
     }
 
+    public CharacterEntity updateCharacterDTO2Entity(CharacterEntity entity, CharacterDTO dto) {
+
+        entity.setName(dto.getName());
+        entity.setImage(dto.getImage());
+        entity.setAge(dto.getAge());
+        entity.setWeight(dto.getWeight());
+        entity.setStory(dto.getStory());
+
+        return entity;
+    }
+
     public CharacterDTO characterEntity2DTO(CharacterEntity entity) {
 
         CharacterDTO dto = new CharacterDTO();
