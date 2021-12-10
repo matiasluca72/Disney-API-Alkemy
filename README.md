@@ -158,7 +158,6 @@ El término de búsqueda, filtro u ordenación se deberán especificar como par�
     </li>
     <li>
         ● /movies?order=ASC | DESC
-
     </li>
 </ul>
 <h3>11. Envío de emails</h3>
