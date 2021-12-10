@@ -11,15 +11,12 @@
     </li>
     <li>
         👉 No es necesario armar el Frontend.
-
     </li>
     <li>
         👉 Las rutas deberán seguir el patrón REST.
-
     </li>
     <li>
         👉 Utilizar la librería Spring Security.
-
     </li>
 </ul>
 
@@ -31,27 +28,21 @@
         <ul>
             <li>
                 ○ Imagen.
-
             </li>
             <li>
                 ○ Nombre.
-
             </li>
             <li>
                 ○ Edad.
-
             </li>
             <li>
                 ○ Peso.
-
             </li>
             <li>
                 ○ Historia.
-
             </li>
             <li>
                 ○ Películas o series asociadas.
-
             </li>
         </ul>
     </li>
@@ -60,23 +51,18 @@
         <ul>
             <li>
                 ○ Imagen.
-
             </li>
             <li>
                 ○ Título.
-
             </li>
             <li>
                 ○ Fecha de creación.
-
             </li>
             <li>
                 ○ Calificación (del 1 al 5).
-
             </li>
             <li>
                 ○ Personajes asociados.
-
             </li>
         </ul>
     </li>
@@ -85,15 +71,12 @@
         <ul>
             <li>
                 ○ Nombre.
-
             </li>
             <li>
                 ○ Imagen.
-
             </li>
             <li>
                 ○ Películas o series asociadas.
-
             </li>
         </ul>
     </li>
@@ -107,11 +90,9 @@
 <ul>
     <li>
         ● /auth/login
-
     </li>
     <li>
         ● /auth/register
-
     </li>
 </ul>
 <h3>3. Listado de Personajes</h3>
@@ -119,18 +100,15 @@ El listado deberá mostrar:
 <ul>
     <li>
         ● Imagen.
-
     </li>
     <li>
         ● Nombre.
-
     </li>
 </ul>
 El endpoint deberá ser:
 <ul>
     <li>
         ● /characters
-
     </li>
 </ul>
 <h3>
@@ -149,11 +127,9 @@ Para especificar el término de búsqueda o filtros se deberán enviar como par�
     </li>
     <li>
         ● GET /characters?age=edad
-
     </li>
     <li>
         ● GET /characters?movies=idMovie
-
     </li>
 </ul>
 <h3>7. Listado de Películas</h3>
@@ -162,7 +138,6 @@ El endpoint deberá ser:
 <ul>
     <li>
         ● GET /movies
-
     </li>
 </ul>
 
@@ -177,11 +152,9 @@ El término de búsqueda, filtro u ordenación se deberán especificar como par�
 <ul>
     <li>
         ● /movies?name=nombre
-
     </li>
     <li>
         ● /movies?genre=idGenero
-
     </li>
     <li>
         ● /movies?order=ASC | DESC
