@@ -24,21 +24,11 @@ public class CharacterController {
      *
      * @return a list of characters with only their image and name attributes
      */
-    @GetMapping("/all-basic") // TODO: Fusion it with the method below
+    @GetMapping
     public ResponseEntity<List<CharacterBasicDTO>> getBasicCharacterDTO() {
 
         List<CharacterBasicDTO> charactersBasic = characterService.getBasicDTOList();
         return ResponseEntity.ok().body(charactersBasic);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<CharacterDTO>> getDetailsByFilters(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) Byte age,
-            @RequestParam(required = false) Set<Long> idMovies
-            ) {
-        List<CharacterDTO> characters = characterService.getByFilters(name, age, idMovies);
-        return ResponseEntity.ok().body(characters);
     }
 
     @GetMapping("/all")
@@ -47,6 +37,17 @@ public class CharacterController {
         List<CharacterDTO> characters = characterService.getDTOList();
         return ResponseEntity.ok().body(characters);
 
+    }
+
+    // Controlador para aplicar filtros
+    @GetMapping("/filters")
+    public ResponseEntity<List<CharacterDTO>> getDetailsByFilters(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Byte age,
+            @RequestParam(required = false) Set<Long> idMovies
+            ) {
+        List<CharacterDTO> characters = characterService.getByFilters(name, age, idMovies);
+        return ResponseEntity.ok().body(characters);
     }
 
     /**

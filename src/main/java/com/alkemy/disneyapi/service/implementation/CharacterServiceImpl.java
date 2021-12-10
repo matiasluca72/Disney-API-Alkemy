@@ -22,13 +22,17 @@ import java.util.Set;
 public class CharacterServiceImpl implements CharacterService {
 
     // Repo
-    @Autowired
     private CharacterRepository characterRepository;
-    @Autowired
     private CharacterSpecification characterSpecification;
     // Mapper
-    @Autowired
     private CharacterMapper characterMapper;
+
+    @Autowired
+    public void setCharacterRepository(CharacterRepository characterRepository, CharacterSpecification characterSpecification, CharacterMapper characterMapper) {
+        this.characterRepository = characterRepository;
+        this.characterSpecification = characterSpecification;
+        this.characterMapper = characterMapper;
+    }
 
     public List<CharacterBasicDTO> getBasicDTOList() {
 
@@ -40,7 +44,7 @@ public class CharacterServiceImpl implements CharacterService {
     public List<CharacterDTO> getDTOList() {
 
         List<CharacterEntity> characters = characterRepository.findAll();
-        List<CharacterDTO> result = characterMapper.characterEntityList2DTOList(characters);
+        List<CharacterDTO> result = characterMapper.characterEntityList2DTOList(characters, true);
         return result;
     }
 
@@ -48,7 +52,7 @@ public class CharacterServiceImpl implements CharacterService {
 
         CharacterEntity entity = characterMapper.characterDTO2Entity(dto);
         CharacterEntity entitySaved = characterRepository.save(entity);
-        CharacterDTO result = characterMapper.characterEntity2DTO(entitySaved);
+        CharacterDTO result = characterMapper.characterEntity2DTO(entitySaved, false);
 
         return result;
     }
@@ -63,7 +67,7 @@ public class CharacterServiceImpl implements CharacterService {
         if (result.isPresent()) {
             CharacterEntity entity = characterMapper.updateCharacterDTO2Entity(result.get(), dto);
             CharacterEntity entityUpdated = characterRepository.save(entity);
-            CharacterDTO dtoUpdated = characterMapper.characterEntity2DTO(entityUpdated);
+            CharacterDTO dtoUpdated = characterMapper.characterEntity2DTO(entityUpdated, false);
             return dtoUpdated;
         } else {
             throw new NotFoundException("Requested character was not found.");
@@ -74,7 +78,7 @@ public class CharacterServiceImpl implements CharacterService {
 
         CharacterFiltersDTO filtersDTO = new CharacterFiltersDTO(name, age, idMovies);
         List<CharacterEntity> entities = characterRepository.findAll(characterSpecification.getByFilters(filtersDTO));
-        List<CharacterDTO> dtos = characterMapper.characterEntityList2DTOList(entities);
+        List<CharacterDTO> dtos = characterMapper.characterEntityList2DTOList(entities, true);
         return dtos;
     }
 
@@ -103,5 +107,10 @@ public class CharacterServiceImpl implements CharacterService {
         }
         return entities;
     }
+
+    public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> characters, boolean loadMovies) {
+        return characterMapper.characterEntityList2DTOList(characters, loadMovies);
+    }
+
 
 }

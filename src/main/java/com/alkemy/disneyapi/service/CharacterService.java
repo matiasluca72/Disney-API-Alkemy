@@ -23,4 +23,6 @@ public interface CharacterService {
     List<CharacterDTO> getByFilters(String name, Byte age, Set<Long> idMovies);
 
     List<CharacterEntity> look4OrCreate(List<CharacterDTO> dtos);
+
+    List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> characters, boolean loadMovies);
 }

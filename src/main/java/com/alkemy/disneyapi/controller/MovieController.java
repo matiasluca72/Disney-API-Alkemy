@@ -31,6 +31,16 @@ public class MovieController {
         return ResponseEntity.ok().body(movies);
     }
 
+    @GetMapping("/filters")
+    public ResponseEntity<List<MovieDTO>> getDetailsByFilters(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) Long idGenre,
+            @RequestParam(required = false, defaultValue = "ASC") String order
+    ) {
+        List<MovieDTO> movies = movieService.getByFilters(title, idGenre, order);
+        return ResponseEntity.ok().body(movies);
+    }
+
     @PostMapping
     public ResponseEntity<MovieDTO> save(@RequestBody MovieDTO dto) {
         MovieDTO dtoUpdated = movieService.save(dto);

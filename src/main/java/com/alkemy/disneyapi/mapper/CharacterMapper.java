@@ -2,7 +2,11 @@ package com.alkemy.disneyapi.mapper;
 
 import com.alkemy.disneyapi.dto.CharacterBasicDTO;
 import com.alkemy.disneyapi.dto.CharacterDTO;
+import com.alkemy.disneyapi.dto.MovieDTO;
 import com.alkemy.disneyapi.entity.CharacterEntity;
+import com.alkemy.disneyapi.service.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,6 +14,13 @@ import java.util.List;
 
 @Component
 public class CharacterMapper {
+
+    private MovieService movieService;
+
+    @Autowired
+    public CharacterMapper(@Lazy MovieService movieService) {
+        this.movieService = movieService;
+    }
 
     public List<CharacterBasicDTO> characterEntityList2BasicDTOList(List<CharacterEntity> entities) {
 
@@ -21,11 +32,11 @@ public class CharacterMapper {
         return basicDTOS;
     }
 
-    public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> entities) {
+    public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> entities, boolean loadMovies) {
 
         List<CharacterDTO> dtos = new ArrayList();
         for (CharacterEntity entity : entities) {
-            dtos.add(characterEntity2DTO(entity));
+            dtos.add(characterEntity2DTO(entity, loadMovies));
         }
         return dtos;
     }
@@ -64,7 +75,7 @@ public class CharacterMapper {
         return entity;
     }
 
-    public CharacterDTO characterEntity2DTO(CharacterEntity entity) {
+    public CharacterDTO characterEntity2DTO(CharacterEntity entity, boolean loadMovies) {
 
         CharacterDTO dto = new CharacterDTO();
 
@@ -74,7 +85,10 @@ public class CharacterMapper {
         dto.setAge(entity.getAge());
         dto.setWeight(entity.getWeight());
         dto.setStory(entity.getStory());
-
+        if (loadMovies) {
+            List<MovieDTO> movieDTOS = movieService.movieEntityList2DTOList(entity.getAssociatedMovies(), false);
+            dto.setAssociatedMovies(movieDTOS);
+        }
         return dto;
     }
 

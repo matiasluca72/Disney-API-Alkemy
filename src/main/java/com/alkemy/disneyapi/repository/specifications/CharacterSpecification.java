@@ -14,7 +14,6 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Component
 public class CharacterSpecification {
@@ -33,7 +32,6 @@ public class CharacterSpecification {
                 );
             }
 
-            // TODO: Verify if this shit works
             if (filtersDTO.getAge() != null) {
                 predicates.add(
                         criteriaBuilder.equal((root.get("age")),
@@ -43,9 +41,8 @@ public class CharacterSpecification {
                 );
             }
 
-            // TODO: Also this shit over here
             if (!CollectionUtils.isEmpty(filtersDTO.getIdMovies())) {
-                Join<MovieEntity, CharacterEntity> join = root.join("movies", JoinType.INNER);
+                Join<MovieEntity, CharacterEntity> join = root.join("associatedMovies", JoinType.INNER);
                 Expression<String> moviesId = join.get("id");
                 predicates.add(moviesId.in(filtersDTO.getIdMovies()));
             }
