@@ -18,11 +18,17 @@ import java.util.List;
 @Component
 public class CharacterSpecification {
 
+    /**
+     * Method for building dinamic queries for the DataBase according to the Filters received
+     * @param filtersDTO To be applied to the query
+     * @return A Specification of CharacterEntity type
+     */
     public Specification<CharacterEntity> getByFilters(CharacterFiltersDTO filtersDTO) {
         return (root, query, criteriaBuilder) -> {
 
             List<Predicate> predicates = new ArrayList();
 
+            // Adding name specificaction
             if (StringUtils.hasLength(filtersDTO.getName())) {
                 predicates.add(
                         criteriaBuilder.like(
@@ -32,6 +38,7 @@ public class CharacterSpecification {
                 );
             }
 
+            // Adding age specificaction
             if (filtersDTO.getAge() != null) {
                 predicates.add(
                         criteriaBuilder.equal((root.get("age")),
@@ -41,6 +48,7 @@ public class CharacterSpecification {
                 );
             }
 
+            // Adding Movies specificaction
             if (!CollectionUtils.isEmpty(filtersDTO.getIdMovies())) {
                 Join<MovieEntity, CharacterEntity> join = root.join("associatedMovies", JoinType.INNER);
                 Expression<String> moviesId = join.get("id");

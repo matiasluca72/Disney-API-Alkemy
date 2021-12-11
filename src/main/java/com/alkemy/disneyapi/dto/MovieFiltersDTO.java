@@ -21,7 +21,6 @@ public class MovieFiltersDTO {
 
     //Order of the results
     public boolean isASC() { return order.compareToIgnoreCase("ASC") == 0; }
-
     public boolean isDESC() { return order.compareToIgnoreCase("DESC") == 0; }
 
 }

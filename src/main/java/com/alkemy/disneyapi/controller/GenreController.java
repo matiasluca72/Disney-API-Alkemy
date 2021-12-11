@@ -3,7 +3,6 @@ package com.alkemy.disneyapi.controller;
 import com.alkemy.disneyapi.dto.GenreDTO;
 import com.alkemy.disneyapi.exceptions.NotFoundException;
 import com.alkemy.disneyapi.service.GenreService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,10 +51,14 @@ public class GenreController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    //EndPoint para actualizar los atributos del registro correspondiente al id pasado como Path Variable
     @PutMapping("/{id}")
     public ResponseEntity<GenreDTO> update(@PathVariable Long id, @RequestBody GenreDTO dto) throws NotFoundException {
+
+        //Llamamos al método del Service pasandole el id del registro a actualizar y el dto con todos los atributos nuevos
         GenreDTO result = genreService.update(id, dto);
+
+        //Devolvemos un ResponseEntity con el dto actualizado en el body
         return ResponseEntity.ok().body(result);
     }
-
 }

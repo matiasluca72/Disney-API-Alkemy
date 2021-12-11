@@ -13,11 +13,17 @@ import java.util.List;
 @Component
 public class MovieSpecification {
 
+    /**
+     * Method for building dinamic queries for the DataBase according to the Filters received
+     * @param filtersDTO To be applied to the query
+     * @return A Specification of CharacterEntity type
+     */
     public Specification<MovieEntity> getByFilters(MovieFiltersDTO filtersDTO) {
         return (root, query, criteriaBuilder) -> {
 
             List<Predicate> predicates = new ArrayList();
 
+            // Adding title specificaction
             if (StringUtils.hasLength(filtersDTO.getTitle())) {
                 predicates.add(
                         criteriaBuilder.like(
@@ -27,6 +33,7 @@ public class MovieSpecification {
                 );
             }
 
+            // Adding genre specificaction
             if (filtersDTO.getIdGenre() != null) {
                 predicates.add(
                         criteriaBuilder.equal((root.get("genreId")),
@@ -48,5 +55,4 @@ public class MovieSpecification {
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
     }
-
 }

@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class MovieBasicDTO {
 
+    // ATTRIBUTES
     private Long id;
     private String image;
     private String title;

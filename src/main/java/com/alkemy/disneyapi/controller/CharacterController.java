@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
+//Controller for API Rest pointing to URL "/characters"
 @RestController
 @RequestMapping("characters")
 public class CharacterController {
 
+    //Service
     @Autowired
     private CharacterService characterService;
 
@@ -26,26 +28,34 @@ public class CharacterController {
      */
     @GetMapping
     public ResponseEntity<List<CharacterBasicDTO>> getBasicCharacterDTO() {
-
         List<CharacterBasicDTO> charactersBasic = characterService.getBasicDTOList();
         return ResponseEntity.ok().body(charactersBasic);
     }
 
+    /**
+     * Gets all the Entities saved in DB as a List of DTOs
+     * @return A list of DTOs with all the Characters' information stored in database
+     */
     @GetMapping("/all")
     public ResponseEntity<List<CharacterDTO>> getAll() {
-
         List<CharacterDTO> characters = characterService.getDTOList();
         return ResponseEntity.ok().body(characters);
 
     }
 
-    // Controlador para aplicar filtros
+    /**
+     * Gets a List of CharacterDTOs that meet the specifications received
+     * @param name Filter by name
+     * @param age Fitler by age
+     * @param idMovies Filter by id from their Associated Movies
+     * @return A list with CahracterDTOs which meet the specifications
+     */
     @GetMapping("/filters")
     public ResponseEntity<List<CharacterDTO>> getDetailsByFilters(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Byte age,
             @RequestParam(required = false) Set<Long> idMovies
-            ) {
+    ) {
         List<CharacterDTO> characters = characterService.getByFilters(name, age, idMovies);
         return ResponseEntity.ok().body(characters);
     }
@@ -74,6 +84,13 @@ public class CharacterController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    /**
+     * Updates the Entity related to the received id with the attributes set in the CharacterDTO
+     * @param id Of the Entity to be updated
+     * @param dto With all the new attributes (must be complete)
+     * @return The Entity already saved and updated
+     * @throws NotFoundException If such id is not related to any Entity in Database
+     */
     @PutMapping("/{id}")
     public ResponseEntity<CharacterDTO> update(@PathVariable Long id, @RequestBody CharacterDTO dto) throws NotFoundException {
         CharacterDTO result = characterService.update(id, dto);
