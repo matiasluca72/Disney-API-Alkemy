@@ -4,6 +4,7 @@ import com.alkemy.disneyapi.auth.dto.AuthenticationRequest;
 import com.alkemy.disneyapi.auth.dto.UserDTO;
 import com.alkemy.disneyapi.auth.entity.UserEntity;
 import com.alkemy.disneyapi.auth.repository.UserRepository;
+import com.alkemy.disneyapi.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,8 +27,8 @@ public class UserDetailsCustomService implements UserDetailsService {
     private JwtUtils jwtTokenUtil;
     private AuthenticationManager authenticationManager;
 
-    //@Autowired
-    //private EmailService emailService;
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     public void setAttributes(
@@ -68,8 +69,8 @@ public class UserDetailsCustomService implements UserDetailsService {
         userEntity.setUsername(userDTO.getUsername());
         userEntity.setPassword(userDTO.getPassword());
         UserEntity entitySaved = userRepository.save(userEntity);
-        //if (userEntity != null)
-        //    emailService.sendWelcomeEmailto(userEntity.getUsername());
+        if (userEntity != null)
+            emailService.sendWelcomeEmailTo(userEntity.getUsername());
         return entitySaved != null;
     }
 
