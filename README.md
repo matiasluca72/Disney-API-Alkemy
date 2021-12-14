@@ -1,165 +1,162 @@
 # Disney-API-Alkemy
+
 <h1> BACKEND - Java </h1>
 <h2>Spring Boot (API) 🚀</h2>
-<h3>Objetivo</h3>
-<p> Desarrollar una API para explorar el mundo de Disney, la cual permitirá conocer y modificar los
-    personajes que lo componen y entender en qué películas estos participaron. Por otro lado, deberá
-    exponer la información para que cualquier frontend pueda consumirla.</p>
+<h3>Goal</h3>
+<p> Develop an API to explore the world of Disney, which will allow knowing and modifying the
+     characters that compose it and understand in which films they participated. On the other hand, it must
+     expose the information so that any frontend can consume it.</p>
 <ul>
     <li>
-        👉 Utilizar Spring Boot.
+        👉 Use Spring Boot.
     </li>
     <li>
-        👉 No es necesario armar el Frontend.
+        👉 No need of Frontend.
     </li>
     <li>
-        👉 Las rutas deberán seguir el patrón REST.
+        👉 Paths must follow a REST pattern.
     </li>
     <li>
-        👉 Utilizar la librería Spring Security.
+        👉 Use Spring Security library.
     </li>
 </ul>
 
-<h2>Requerimientos técnicos</h2>
-<h3>1. Modelado de Base de Datos</h3>
+<h2>Technical requirements</h2>
+<h3>1. Database Modeling</h3>
 <ul>
     <li>
-        ● Personaje: deberá tener,
+        Character: must have,
         <ul>
             <li>
-                ○ Imagen.
+                Image.
             </li>
             <li>
-                ○ Nombre.
+                Name.
             </li>
             <li>
-                ○ Edad.
+                Age.
             </li>
             <li>
-                ○ Peso.
+                Weight.
             </li>
             <li>
-                ○ Historia.
+                Story.
             </li>
             <li>
-                ○ Películas o series asociadas.
+                Associated movies.
             </li>
         </ul>
     </li>
     <li>
-        ● Película o Serie: deberá tener,
+        Movies: must have,
         <ul>
             <li>
-                ○ Imagen.
+                Image.
             </li>
             <li>
-                ○ Título.
+                Title.
             </li>
             <li>
-                ○ Fecha de creación.
+                Creation date.
             </li>
             <li>
-                ○ Calificación (del 1 al 5).
+                Rating (from 1 to 5).
             </li>
             <li>
-                ○ Personajes asociados.
+                Associated characters.
             </li>
         </ul>
     </li>
     <li>
-        ● Género: deberá tener,
+        Genre: must have,
         <ul>
             <li>
-                ○ Nombre.
+                Name.
             </li>
             <li>
-                ○ Imagen.
-            </li>
-            <li>
-                ○ Películas o series asociadas.
+                Image.
             </li>
         </ul>
     </li>
 </ul>
 
-<h3>2. Autenticación de Usuarios</h3>
-<p>Para realizar peticiones a los endpoints subsiguientes el usuario deberá contar con un token que
-    obtendrá al autenticarse. Para ello, deberán desarrollarse los endpoints de registro y login, que
-    permitan obtener el token. <br>
-    Los endpoints encargados de la autenticación deberán ser:</p>
+<h3>2. User Authentication</h3>
+<p>To make requests to subsequent endpoints, the user must have a token that
+    will be given when authenticating. For this, the registration and login endpoints must be developed, which
+    allow to obtain the token. <br>
+    Endpoints in charge of authentication must be:</p>
 <ul>
     <li>
-        ● /auth/login
+        /auth/signin
     </li>
     <li>
-        ● /auth/register
+        /auth/signup
     </li>
 </ul>
-<h3>3. Listado de Personajes</h3>
-El listado deberá mostrar:
+<h3>3. Characters List</h3>
+List must show:
 <ul>
     <li>
-        ● Imagen.
+        Image.
     </li>
     <li>
-        ● Nombre.
+        Name.
     </li>
 </ul>
-El endpoint deberá ser:
+Endpoint must be:
 <ul>
     <li>
-        ● /characters
+        /characters
     </li>
 </ul>
 <h3>
-    4. Creación, Edición y Eliminación de Personajes (CRUD)
+    4. Creation, Read, Update and Delete Characters (CRUD)
 </h3>
-Deberán existir las operaciones básicas de creación, edición y eliminación de personajes.
-<h3>5. Detalle de Personaje</h3>
-En el detalle deberán listarse todos los atributos del personaje, como así también sus películas o
-series relacionadas.
-<h3>6. Búsqueda de Personajes</h3>
-Deberá permitir buscar por nombre, y filtrar por edad, peso o películas/series en las que participó.
-Para especificar el término de búsqueda o filtros se deberán enviar como parámetros de query:
+There should be the basic operations of creating, editing and deleting characters.
+<h3>5. Character Details</h3>
+All the character's attributes should be listed, as well as his movies.
+<h3>6. Character Search</h3>
+It should allow to search by name, and filter by age, weight or movies in which the character has participated.
+To specify the search term or filters, they must be sent as query parameters:
 <ul>
     <li>
-        ● GET /characters?name=nombre
+        GET /characters?name=nombre
     </li>
     <li>
-        ● GET /characters?age=edad
+        GET /characters?age=edad
     </li>
     <li>
-        ● GET /characters?movies=idMovie
+        GET /characters?movies=idMovie
     </li>
 </ul>
-<h3>7. Listado de Películas</h3>
-Deberá mostrar solamente los campos imagen, título y fecha de creación. <br>
-El endpoint deberá ser:
+<h3>7. Movies List</h3>
+It must show only image, title and creation date fields.<br>
+Endpoint must be:
 <ul>
     <li>
-        ● GET /movies
+        GET /movies
     </li>
 </ul>
 
-<h3>8. Detalle de Película / Serie con sus personajes</h3>
-Devolverá todos los campos de la película o serie junto a los personajes asociados a la misma
-<h3> 9. Creación, Edición y Eliminación de Película / Serie</h3>
-Deberán existir las operaciones básicas de creación, edición y eliminación de películas o series.
-<h3>10.Búsqueda de Películas o Series</h3>
-Deberá permitir buscar por título, y filtrar por género. Además, permitir ordenar los resultados por
-fecha de creación de forma ascendiente o descendiente. <br>
-El término de búsqueda, filtro u ordenación se deberán especificar como parámetros de query:
+<h3>8. Movie details with its characters</h3>
+It will return all movie fields along with a list of characters associated to such movie.
+<h3> 9. Creation, Update and Delete a Movie (CRUD)</h3>
+There should be the basic operations of creating, editing and deleting movies.
+<h3>10. Movie Search</h3>
+It should allow searching by title, and filtering by genre. Also, allow to sort the results by
+creation date in ascending or descending order. <br>
+The search term, filter or sort must be specified as query parameters:
 <ul>
     <li>
-        ● /movies?name=nombre
+        /movies?name=nombre
     </li>
     <li>
-        ● /movies?genre=idGenero
+        /movies?genre=idGenero
     </li>
     <li>
-        ● /movies?order=ASC | DESC
+        /movies?order=ASC | DESC
     </li>
 </ul>
-<h3>11. Envío de emails</h3>
-Al registrarse en el sitio, el usuario deberá recibir un email de bienvenida. Es recomendable, la
-utilización de algún servicio de terceros como SendGrid.
+<h3>11. Email Sending</h3>
+When registering on the site, the user should receive a welcome email. It is recommended,
+use of a third-party service such as SendGrid.

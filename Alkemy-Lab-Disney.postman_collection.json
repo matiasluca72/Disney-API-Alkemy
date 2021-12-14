@@ -1,0 +1,522 @@
+{
+	"info": {
+		"_postman_id": "77abe2d9-2fcd-4ea2-a0b6-6efb6fa85d00",
+		"name": "Alkemy-Lab-Disney",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"matias@dev.com\",\r\n    \"password\": \"password1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"matias@dev.com\",\r\n    \"password\": \"password2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "genres",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"drama\",\r\n    \"image\": \"/url/de/prueba.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genres",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "genres",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/genres",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "genres/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"aventuras\",\r\n    \"image\":\"url://example.test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genres/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "genres/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genres/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "characters",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Mr. Incredible\",\r\n    \"image\": \"/url/de/prueba.jpg\",\r\n    \"age\": 47,\r\n    \"weight\": 105.25,\r\n    \"story\": \"A superhero with a strength beyond any limits\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "characters",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXRpYXNAZGV2LmNvbSIsImV4cCI6MTYzOTQ3OTcwMiwiaWF0IjoxNjM5NDQzNzAyfQ.ZnhgfRhQVvhGNDKc8NbblUsXaIau1-SjlWt5KU6QpZY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "characters/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/characters/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "characters/filters?filters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/characters/filters?name=M&age=12&idMovies=16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"filters"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "M"
+						},
+						{
+							"key": "age",
+							"value": "12"
+						},
+						{
+							"key": "idMovies",
+							"value": "16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "characters/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tarzan: King of Apes\",\r\n    \"image\": \"/url/de/prueba.jpg\",\r\n    \"age\": 37,\r\n    \"weight\": 82.01,\r\n    \"story\": \"A man who survived in an island among the apes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/characters/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "characters/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/characters/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"/url/de/prueba.jpg\",\r\n    \"title\": \"Ratatouille\",\r\n    \"creationDate\": \"2005-07-31\",\r\n    \"rating\": 5,\r\n    \"genreId\": 4,\r\n    \"characters\": [\r\n        {\r\n            \"id\": 20,\r\n            \"image\": \"/url/de/prueba.jpg\",\r\n            \"name\": \"Remi\",\r\n            \"age\": 7,\r\n            \"weight\": 2.01,\r\n            \"story\": \"A rat with a particular sense of taste and smell.\"\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"image\": \"/url/de/prueba.jpg\",\r\n            \"name\": \"Linguini\",\r\n            \"age\": 25,\r\n            \"weight\": 72.01,\r\n            \"story\": \"A french guy who doesn't know how to cook\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"image\":\"/url/de/prueba.jpg\",\r\n    \"title\":\"The Incredibles\",\r\n    \"creationDate\":\"2005-07-31\",\r\n    \"rating\": 5,\r\n    \"genreId\": \r\n\r\n\r\n    \"characters\": [\r\n        {\r\n            \"name\": \"Mr. Incredible\",\r\n            \"image\": \"/url/de/prueba.jpg\",\r\n            \"age\": 47,\r\n            \"weight\": 105.25,\r\n            \"story\": \"A superhero with a strength beyond any limits\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies/all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"image\":\"/url/de/prueba.jpg\",\r\n    \"title\":\"The Incredibles\",\r\n    \"creationDate\":\"2005-07-31\",\r\n    \"rating\": 5,\r\n    \"genreId\": \r\n\r\n\r\n    \"characters\": [\r\n        {\r\n            \"name\": \"Mr. Incredible\",\r\n            \"image\": \"/url/de/prueba.jpg\",\r\n            \"age\": 47,\r\n            \"weight\": 105.25,\r\n            \"story\": \"A superhero with a strength beyond any limits\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies/filters?filters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/filters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"filters"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "d",
+							"disabled": true
+						},
+						{
+							"key": "idGenre",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": "DESC",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"image\": \"/url/de/prueba.jpg\",\r\n    \"title\": \"Toy Story: The very first one\",\r\n    \"creationDate\": \"1995-07-31\",\r\n    \"rating\": 5,\r\n    \"genreId\": 3,\r\n    \"characters\": [\r\n        {\r\n            \"id\": 8,\r\n            \"image\": \"/url/de/prueba.jpg\",\r\n            \"name\": \"Buzz Lightyear\",\r\n            \"age\": 12,\r\n            \"weight\": 1.65,\r\n            \"story\": \"A space ranger from outer space and a good partner of Woody\"\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"image\": \"/url/de/prueba.jpg\",\r\n            \"name\": \"Woody\",\r\n            \"age\": 15,\r\n            \"weight\": 1.25,\r\n            \"story\": \"Woody is Andi's favourite toy and a loyal friend\"\r\n        },\r\n        {\r\n            \"image\": \"/url/de/prueba.jpg\",\r\n            \"name\": \"Rex\",\r\n            \"age\": 5,\r\n            \"weight\": 1.25,\r\n            \"story\": \"A big dinosaur toy which isn't quite brave\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"22"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
