@@ -68,26 +68,26 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, bodyResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
     }
 
-//    /**
-//     * Handler for @Valid annotation
-//     */
-//    @Override
-//    protected ResponseEntity<Object> handleMethodArgumentNotValid(
-//            MethodArgumentNotValidException ex,
-//            HttpHeaders headers,
-//            HttpStatus status,
-//            WebRequest request
-//    ) {
-//        List<String> errors = new ArrayList();
-//        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-//            errors.add(error.getField() + ": " + error.getDefaultMessage());
-//        }
-//        for (ObjectError error : ex.getBindingResult().getGlobalErrors()) {
-//            errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
-//        }
-//        ApiErrorDTO apiError = new ApiErrorDTO(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), errors);
-//        return handleExceptionInternal(
-//                ex, apiError, headers, apiError.getStatus(), request
-//        );
-//    }
+    /**
+     * Handler for @Valid annotation
+     */
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+            MethodArgumentNotValidException ex,
+            HttpHeaders headers,
+            HttpStatus status,
+            WebRequest request
+    ) {
+        List<String> errors = new ArrayList();
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+            errors.add(error.getField() + ": " + error.getDefaultMessage());
+        }
+        for (ObjectError error : ex.getBindingResult().getGlobalErrors()) {
+            errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
+        }
+        ApiErrorDTO apiError = new ApiErrorDTO(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), errors);
+        return handleExceptionInternal(
+                ex, apiError, headers, apiError.getStatus(), request
+        );
+    }
 }
