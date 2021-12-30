@@ -41,7 +41,7 @@ public class UserDetailsCustomService implements UserDetailsService {
     }
 
     /**
-     * Overriden abstract method from UserDetailsService
+     * Overridden abstract method from UserDetailsService
      * Looks for an UserEntity in the DB and, if there is such, returns a new User with its attributes
      *
      * @param username To look for in DB
